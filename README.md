@@ -1,3 +1,3 @@
-# angular-ivy-l7epic
+# Angular project for RxJS presentation
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/angular-ivy-l7epic)
+[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/rxjs-angular-presentation)
