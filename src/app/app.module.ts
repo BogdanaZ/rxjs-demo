@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { MockMemoryDataService } from './mock-memory-data.service';
 import { UserService } from './user.service';
+import { MergeUsersComponent } from './components/merge-users/merge-users.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   imports: [
@@ -16,6 +18,7 @@ import { UserService } from './user.service';
     FormsModule,
     HttpClientModule,
     HttpModule,
+    AppRoutingModule,
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
@@ -25,7 +28,7 @@ import { UserService } from './user.service';
     })
   ],
   providers: [UserService],
-  declarations: [AppComponent, HelloComponent],
+  declarations: [AppComponent, HelloComponent, MergeUsersComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
