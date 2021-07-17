@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { merge, combineLatest } from 'rxjs';
 import { User } from '../../user.model';
-import { UserService } from '../../user.service';
+import { API, UserService } from '../../user.service';
 
 @Component({
   selector: 'app-merge-users',
@@ -8,10 +9,22 @@ import { UserService } from '../../user.service';
   styleUrls: ['./merge-users.component.css']
 })
 export class MergeUsersComponent implements OnInit {
-  users: User[];
+  users: User[] = [];
   constructor(private readonly _userservice: UserService) {}
 
   ngOnInit() {
-    this._userservice.getUsers().subscribe(users => (this.users = users));
+    // merge(
+    //   this._userservice.getUsers(),
+    //   this._userservice.getUsers(API.usersApiSecond)
+    // ).subscribe((users: User[]) => {
+    //   this.users = [...this.users, ...users];
+    // });
+
+    combineLatest(
+      this._userservice.getUsers(),
+      this._userservice.getUsers(API.usersApiSecond)
+    ).subscribe((users: User[]) => {
+      this.users = [...this.users, ...users];
+    });
   }
 }

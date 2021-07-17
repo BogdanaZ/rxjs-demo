@@ -6,7 +6,6 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello.component';
 import { MockMemoryDataService } from './mock-memory-data.service';
 import { UserService } from './user.service';
 import { MergeUsersComponent } from './components/merge-users/merge-users.component';
@@ -28,7 +27,7 @@ import { AppRoutingModule } from './app-routing.module';
     })
   ],
   providers: [UserService],
-  declarations: [AppComponent, HelloComponent, MergeUsersComponent],
+  declarations: [AppComponent, MergeUsersComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

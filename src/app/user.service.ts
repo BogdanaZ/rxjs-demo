@@ -4,11 +4,14 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { User } from './user.model';
 
+export const API = {
+  users: 'api/usersApiFirst',
+  usersApiSecond: 'api/usersApiSecond'
+};
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private readonly usersUrl = 'api/users';
   private readonly httpOptions;
   constructor(private http: HttpClient) {
     this.httpOptions = {
@@ -17,8 +20,8 @@ export class UserService {
   }
 
   /** GET Users from the server */
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.usersUrl).pipe(
+  getUsers(userApi?: string): Observable<User[]> {
+    return this.http.get<User[]>(userApi || API.users).pipe(
       tap(_ => this.log('fetched users')),
       catchError(this.handleError<User[]>('getUsers', []))
     );
@@ -26,7 +29,7 @@ export class UserService {
 
   /** GET user by id. Will 404 if id not found */
   getUser(id: number): Observable<User> {
-    const url = `${this.usersUrl}/${id}`;
+    const url = `${API.users}/${id}`;
     return this.http.get<User>(url).pipe(
       tap(_ => this.log(`fetched user id=${id}`)),
       catchError(this.handleError<User>(`getUser id=${id}`))
@@ -34,7 +37,7 @@ export class UserService {
   }
 
   updateUser(user: User): Observable<any> {
-    return this.http.put(this.usersUrl, user, this.httpOptions).pipe(
+    return this.http.put(API.users, user, this.httpOptions).pipe(
       tap(_ => this.log(`updated user id=${user.id}`)),
       catchError(this.handleError<any>('updateUser'))
     );
@@ -42,7 +45,7 @@ export class UserService {
 
   /** DELETE: delete the user from the server */
   deleteUser(id: number): Observable<User> {
-    const url = `${this.usersUrl}/${id}`;
+    const url = `${API.users}/${id}`;
 
     return this.http.delete<User>(url, this.httpOptions).pipe(
       tap(_ => this.log(`deleted user id=${id}`)),
@@ -56,7 +59,7 @@ export class UserService {
       // if not search term, return empty user array.
       return of([]);
     }
-    return this.http.get<User[]>(`${this.usersUrl}/?name=${term}`).pipe(
+    return this.http.get<User[]>(`${API.users}/?name=${term}`).pipe(
       tap(x =>
         x.length
           ? this.log(`found users matching "${term}"`)
