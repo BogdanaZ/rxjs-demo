@@ -7,10 +7,7 @@ import { UserService } from './user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  public readonly name = 'Angular ' + VERSION.major;
-  constructor(private readonly _userservice: UserService) {}
+  constructor() {}
 
-  ngOnInit() {
-    this._userservice.getUsers().subscribe(x => console.log(x));
-  }
+  ngOnInit() {}
 }

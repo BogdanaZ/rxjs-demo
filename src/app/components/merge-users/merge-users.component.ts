@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../../user.model';
+import { UserService } from '../../user.service';
 
 @Component({
   selector: 'app-merge-users',
@@ -6,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./merge-users.component.css']
 })
 export class MergeUsersComponent implements OnInit {
-
-  constructor() { }
+  users: User[];
+  constructor(private readonly _userservice: UserService) {}
 
   ngOnInit() {
+    this._userservice.getUsers().subscribe(users => (this.users = users));
   }
-
 }
