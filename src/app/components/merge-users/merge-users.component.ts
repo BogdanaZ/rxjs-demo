@@ -13,18 +13,21 @@ export class MergeUsersComponent implements OnInit {
   constructor(private readonly _userservice: UserService) {}
 
   ngOnInit() {
-    // merge(
-    //   this._userservice.getUsers(),
-    //   this._userservice.getUsers(API.usersApiSecond)
-    // ).subscribe((users: User[]) => {
-    //   this.users = [...this.users, ...users];
-    // });
+    merge(
+      this._userservice.getUsers(),
+      this._userservice.getUsers(API.usersApiSecond)
+    ).subscribe((users: User[]) => {
+      console.log(users);
+      this.users = [...this.users, ...users];
+    });
 
     combineLatest(
       this._userservice.getUsers(),
       this._userservice.getUsers(API.usersApiSecond)
-    ).subscribe((users: User[]) => {
-      this.users = [...this.users, ...users];
+    ).subscribe(([usersAPI, usersApiSecond]) => {
+      console.log(usersAPI);
+      console.log(usersApiSecond);
+      this.users = [...usersAPI, ...usersApiSecond];
     });
   }
 }
