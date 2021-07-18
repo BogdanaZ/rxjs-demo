@@ -10,6 +10,7 @@ import { MockMemoryDataService } from './mock-memory-data.service';
 import { UserService } from './user.service';
 import { MergeUsersComponent } from './components/merge-users/merge-users.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CombineLatestComponent } from './components/combine-latest/combine-latest.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,7 @@ import { AppRoutingModule } from './app-routing.module';
     })
   ],
   providers: [UserService],
-  declarations: [AppComponent, MergeUsersComponent],
+  declarations: [AppComponent, MergeUsersComponent, CombineLatestComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

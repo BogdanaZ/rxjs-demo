@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpEvent, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { User } from './user.model';
+import { Age, User } from './user.model';
 
 export const API = {
   users: 'api/usersApiFirst',
-  usersApiSecond: 'api/usersApiSecond'
+  usersApiSecond: 'api/usersApiSecond',
+  ages: 'api/ages'
 };
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,14 @@ export class UserService {
     return this.http.get<User[]>(userApi || API.users).pipe(
       tap(_ => this.log('fetched users')),
       catchError(this.handleError<User[]>('getUsers', []))
+    );
+  }
+
+  /** GET Ages from the server */
+  getAges(): Observable<Age[]> {
+    return this.http.get<Age[]>(API.ages).pipe(
+      tap(_ => this.log('fetched ages')),
+      catchError(this.handleError<Age[]>('getAges', []))
     );
   }
 
