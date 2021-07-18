@@ -22,6 +22,11 @@
         <th scope="row">{{user.age}}</th>
         <td>{{user.type}}</td>
       </tr>
+      <tr *ngIf="loading">
+        <td colspan="100%" class="align-center no-border">
+          <div class="spinner-border text-danger" role="status"></div>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>

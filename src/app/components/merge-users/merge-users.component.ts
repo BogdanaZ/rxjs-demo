@@ -20,6 +20,7 @@ export class MergeUsersComponent implements OnInit {
     ).subscribe((users: User[]) => {
       console.log(users);
       this.users = [...this.users, ...users];
+    
     });
 
     // combineLatest(

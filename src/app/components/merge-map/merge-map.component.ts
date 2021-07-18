@@ -18,6 +18,7 @@ export class MergeMapComponent implements OnInit {
   users: UserAgeWithType[] = [];
   search: string;
   searchString: Subject<string> = new Subject();
+  loading = false;
   constructor(private readonly _userservice: UserService) {}
 
   ngOnInit() {
@@ -35,11 +36,13 @@ export class MergeMapComponent implements OnInit {
           type: ageType.type
         } as UserAgeWithType);
         console.log(this.users);
+        this.loading = false;
       });
   }
 
   public updateSearch(value) {
     if (value && parseInt(value) >= 11 && parseInt(value) <= 20) {
+      this.loading = true;
       this.searchString.next(value);
     }
   }

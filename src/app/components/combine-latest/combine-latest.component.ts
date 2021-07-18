@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserAge, User, Age } from '../../user.model';
+import { UserAge } from '../../user.model';
 import { API, UserService } from '../../user.service';
-import { combineLatest } from 'rxjs';
+import { combineLatest, BehaviorSubject } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
 @Component({
@@ -11,6 +11,7 @@ import { delay } from 'rxjs/operators';
 })
 export class CombineLatestComponent implements OnInit {
   users: UserAge[] = [];
+  public loading = true;
   constructor(private readonly _userservice: UserService) {}
 
   ngOnInit() {
@@ -26,6 +27,7 @@ export class CombineLatestComponent implements OnInit {
         mergeData.age = userAge.age;
         this.users.push(mergeData);
       });
+      this.loading = false;
     });
   }
 }
