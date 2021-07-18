@@ -8,8 +8,15 @@ export interface Age {
   age: string;
 }
 
-export interface UserAge {
+export interface AgeType {
   id: number;
-  nume: string;
+  type: string;
+}
+
+export interface UserAge extends User {
   age: string;
+}
+
+export interface UserAgeWithType extends UserAge {
+  type: string;
 }

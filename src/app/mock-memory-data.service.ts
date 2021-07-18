@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { User } from './user.model';
+import { Age, AgeType, User } from './user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MockMemoryDataService implements InMemoryDbService {
   createDb() {
-    const usersApiFirst = [
+    const usersApiFirst: User[] = [
       { id: 11, nume: 'User 11' },
       { id: 12, nume: 'User 12' },
       { id: 13, nume: 'User 13' },
@@ -19,7 +19,7 @@ export class MockMemoryDataService implements InMemoryDbService {
       { id: 19, nume: 'User 19' },
       { id: 20, nume: 'User 20' }
     ];
-    const usersApiSecond = [
+    const usersApiSecond: User[] = [
       { id: 21, nume: 'User 21' },
       { id: 22, nume: 'User 22' },
       { id: 23, nume: 'User 23' },
@@ -32,7 +32,7 @@ export class MockMemoryDataService implements InMemoryDbService {
       { id: 30, nume: 'User 30' }
     ];
 
-    const ages = [
+    const ages: Age[] = [
       { id: 11, age: '11' },
       { id: 12, age: '12' },
       { id: 13, age: '13' },
@@ -54,7 +54,31 @@ export class MockMemoryDataService implements InMemoryDbService {
       { id: 29, age: '29' },
       { id: 30, age: '30' }
     ];
-    return { usersApiFirst, usersApiSecond, ages };
+
+    // where id is the age number
+    const agesType: AgeType[] = [
+      { id: 11, type: 'children' },
+      { id: 12, type: 'children' },
+      { id: 13, type: 'children' },
+      { id: 14, type: 'children' },
+      { id: 15, type: 'youth' },
+      { id: 16, type: 'youth' },
+      { id: 17, type: 'youth' },
+      { id: 18, type: 'youth' },
+      { id: 19, type: 'youth' },
+      { id: 20, type: 'youth' },
+      { id: 21, type: 'adult' },
+      { id: 22, type: 'adult' },
+      { id: 23, type: 'adult' },
+      { id: 24, type: 'adult' },
+      { id: 25, type: 'adult' },
+      { id: 26, type: 'adult' },
+      { id: 27, type: 'adult' },
+      { id: 28, type: 'adult' },
+      { id: 29, type: 'adult' },
+      { id: 30, type: 'adult' }
+    ];
+    return { usersApiFirst, usersApiSecond, ages, agesType };
   }
 
   // Overrides the genId method to ensure that a user always has an id.

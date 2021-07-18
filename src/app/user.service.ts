@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEvent, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { Age, User } from './user.model';
+import { Age, AgeType, User } from './user.model';
 
 export const API = {
   users: 'api/usersApiFirst',
   usersApiSecond: 'api/usersApiSecond',
-  ages: 'api/ages'
+  ages: 'api/ages',
+  agesType: 'api/agesType'
 };
+
 @Injectable({
   providedIn: 'root'
 })
@@ -43,6 +45,23 @@ export class UserService {
       tap(_ => this.log(`fetched user id=${id}`)),
       catchError(this.handleError<User>(`getUser id=${id}`))
     );
+  }
+
+  /** GET age by id. Will 404 if id not found */
+  getAge(id: number): Observable<Age> {
+    const url = `${API.ages}/${id}`;
+    return this.http.get<Age>(url).pipe(
+      tap(_ => this.log(`fetched age id=${id}`)),
+      catchError(this.handleError<User>(`getAge id=${id}`))
+    ) as Observable<Age>;
+  }
+  /** GET agesType by id. Will 404 if id not found */
+  getAgeType(id: number): Observable<AgeType> {
+    const url = `${API.agesType}/${id}`;
+    return this.http.get<AgeType>(url).pipe(
+      tap(_ => this.log(`fetched age type id=${id}`)),
+      catchError(this.handleError<User>(`getAgeType id=${id}`))
+    ) as Observable<AgeType>;
   }
 
   updateUser(user: User): Observable<any> {

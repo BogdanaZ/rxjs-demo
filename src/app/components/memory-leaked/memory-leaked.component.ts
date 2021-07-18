@@ -10,18 +10,18 @@ import { Component } from '@angular/core';
     <button class="btn btn-danger" (click)="destroy()">
       Destroy
     </button>
-    <app-child-memory-leaked *ngIf="isAlive"></app-child-memory-leaked>
+    <app-child-memory-leaked *ngIf="goLive"></app-child-memory-leaked>
   `
 })
 export class MemoryLeakedComponent {
-  isAlive = false;
+  goLive = false;
   constructor() {}
 
   destroy() {
-    this.isAlive = false;
+    this.goLive = false;
   }
 
   public relive() {
-    this.isAlive = true;
+    this.goLive = true;
   }
 }

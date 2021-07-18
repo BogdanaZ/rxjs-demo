@@ -1,21 +1,46 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark">
   <a class="navbar-brand" href="#">RxJS</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-</button>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNavDropdown"
+    aria-controls="navbarNavDropdown"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/merge" routerLinkActive="active-link"
+          >Merge</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/merge">Merge</a>
+        <a
+          class="nav-link"
+          routerLink="/combine-latest"
+          routerLinkActive="active-link"
+          >Combine Latest</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/combine-latest">Combine Latest</a>
+        <a
+          class="nav-link"
+          routerLink="/memory-leaked"
+          routerLinkActive="active-link"
+          >Memory Leak</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/memory-leaked">Memory Leak</a>
+        <a
+          class="nav-link"
+          routerLink="/merge-map"
+          routerLinkActive="active-link"
+          >Merge-Switch Map</a
+        >
       </li>
     </ul>
   </div>

@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CombineLatestComponent } from './components/combine-latest/combine-latest.component';
 import { MemoryLeakedComponent } from './components/memory-leaked/memory-leaked.component';
 import { ChildMemoryLeakedComponent } from './components/child-memory-leaked/child-memory-leaked.component';
+import { MergeMapComponent } from './components/merge-map/merge-map.component';
 
 @NgModule({
   imports: [
@@ -30,7 +31,14 @@ import { ChildMemoryLeakedComponent } from './components/child-memory-leaked/chi
     })
   ],
   providers: [UserService],
-  declarations: [AppComponent, MergeUsersComponent, CombineLatestComponent, MemoryLeakedComponent, ChildMemoryLeakedComponent],
+  declarations: [
+    AppComponent,
+    MergeUsersComponent,
+    CombineLatestComponent,
+    MemoryLeakedComponent,
+    ChildMemoryLeakedComponent,
+    MergeMapComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
