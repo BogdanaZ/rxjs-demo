@@ -1,9 +1,12 @@
 <div class="container">
   <h2>Introdu un numar intre 11 si 20</h2>
   <input
+    type="text"
+    pattern="\d*"
+    maxlength="2"
     [(ngModel)]="search"
     (ngModelChange)="updateSearch($event)"
-    placeholder="varsta"
+    placeholder="id"
   />
 
   <table class="table">
