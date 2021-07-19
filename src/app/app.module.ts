@@ -14,6 +14,7 @@ import { CombineLatestComponent } from './components/combine-latest/combine-late
 import { MemoryLeakedComponent } from './components/memory-leaked/memory-leaked.component';
 import { ChildMemoryLeakedComponent } from './components/child-memory-leaked/child-memory-leaked.component';
 import { MergeMapComponent } from './components/merge-map/merge-map.component';
+import { DataStoreService } from './data-store.service';
 
 @NgModule({
   imports: [
@@ -30,7 +31,7 @@ import { MergeMapComponent } from './components/merge-map/merge-map.component';
       dataEncapsulation: false
     })
   ],
-  providers: [UserService],
+  providers: [UserService, DataStoreService],
   declarations: [
     AppComponent,
     MergeUsersComponent,

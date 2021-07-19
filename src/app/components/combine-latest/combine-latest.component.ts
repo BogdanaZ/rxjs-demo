@@ -3,6 +3,7 @@ import { UserAge } from '../../user.model';
 import { API, UserService } from '../../user.service';
 import { combineLatest, BehaviorSubject } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { DataStoreService } from '../../data-store.service';
 
 @Component({
   selector: 'app-combine-latest',
@@ -12,7 +13,10 @@ import { delay } from 'rxjs/operators';
 export class CombineLatestComponent implements OnInit {
   users: UserAge[] = [];
   public loading = true;
-  constructor(private readonly _userservice: UserService) {}
+  constructor(
+    private readonly _userservice: UserService,
+    private readonly _dataStoreService: DataStoreService
+  ) {}
 
   ngOnInit() {
     combineLatest(
@@ -27,6 +31,7 @@ export class CombineLatestComponent implements OnInit {
         mergeData.age = userAge.age;
         this.users.push(mergeData);
       });
+      this._dataStoreService.updatedDataSelection(this.users);
       this.loading = false;
     });
   }
