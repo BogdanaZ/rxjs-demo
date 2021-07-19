@@ -3,18 +3,20 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'parent-leaked',
   template: `
-    <h2 class="mb-5">Memory Leaked - example</h2>
-    <button
-      class="btn btn-primary mr-1"
-      (click)="relive()"
-      style="margin-right: 10px;"
-    >
-      Show live component
-    </button>
-    <button class="btn btn-danger" (click)="destroy()">
-      Hide live component
-    </button>
-    <app-child-memory-leaked *ngIf="goLive"></app-child-memory-leaked>
+    <div class="container">
+      <h2 class="mb-5">Memory Leaked - example</h2>
+      <button
+        class="btn btn-primary mr-1"
+        (click)="relive()"
+        style="margin-right: 10px;"
+      >
+        Show live component
+      </button>
+      <button class="btn btn-danger" (click)="destroy()">
+        Hide live component
+      </button>
+      <app-child-memory-leaked *ngIf="goLive"></app-child-memory-leaked>
+    </div>
   `
 })
 export class MemoryLeakedComponent {
