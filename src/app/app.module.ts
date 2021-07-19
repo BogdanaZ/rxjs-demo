@@ -15,6 +15,7 @@ import { MemoryLeakedComponent } from './components/memory-leaked/memory-leaked.
 import { ChildMemoryLeakedComponent } from './components/child-memory-leaked/child-memory-leaked.component';
 import { MergeMapComponent } from './components/merge-map/merge-map.component';
 import { DataStoreService } from './data-store.service';
+import { DataStoreComponent } from './components/data-store/data-store.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { DataStoreService } from './data-store.service';
     CombineLatestComponent,
     MemoryLeakedComponent,
     ChildMemoryLeakedComponent,
-    MergeMapComponent
+    MergeMapComponent,
+    DataStoreComponent
   ],
   bootstrap: [AppComponent]
 })
