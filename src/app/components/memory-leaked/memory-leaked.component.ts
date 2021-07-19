@@ -4,11 +4,15 @@ import { Component } from '@angular/core';
   selector: 'parent-leaked',
   template: `
     <h2 class="mb-5">Memory Leaked - example</h2>
-    <button class="btn btn-primary mr-1" (click)="relive()">
-      Relive
+    <button
+      class="btn btn-primary mr-1"
+      (click)="relive()"
+      style="margin-right: 10px;"
+    >
+      Show live component
     </button>
     <button class="btn btn-danger" (click)="destroy()">
-      Destroy
+      Hide live component
     </button>
     <app-child-memory-leaked *ngIf="goLive"></app-child-memory-leaked>
   `

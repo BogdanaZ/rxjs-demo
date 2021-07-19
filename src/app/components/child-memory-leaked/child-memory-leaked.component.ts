@@ -26,7 +26,7 @@ export class ChildMemoryLeakedComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.counterSubscription.unsubscribe();
+    // this.counterSubscription.unsubscribe();
     console.log(`Counter ${this.componentId} oprit la ${this.counter}`);
   }
 }
