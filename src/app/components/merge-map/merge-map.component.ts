@@ -44,7 +44,7 @@ export class MergeMapComponent implements OnInit {
     }
   }
 
-  private getUserDetails(userID: number) {
+  private getUserDetails(userID: number): Observable<any> {
     return combineLatest(
       this._userservice.getUser(userID),
       this._userservice
